@@ -1,0 +1,28 @@
+name: curry
+version: 0.0.1
+cabal-version: >= 1.6
+build-type: Simple
+license: BSD3
+license-file: LICENSE
+copyright: (c) 2011, 2012 Maximilian Marx
+author: Maximilian Marx
+maintainer: mmarx@wh2.tu-dresden.de
+stability: experimental
+synopsis: Demonstration of numerical algorithms in Haskell
+description: Sample implementation of a few numerical algorithms in Haskell for the seminar “Mathematical programming with modern languages.”
+tested-with: GHC == 7.2.1
+category: Numeric
+
+library
+ exposed-modules: Curry.Matrix, Curry.Pivot, Curry.Gauss
+ build-depends: base >= 4.4, array
+ GHC-Options: -O3
+
+executable curry
+ main-is: Curry.hs
+ build-depends: base >= 4.4
+ GHC-Options: -O3 -rtsopts
+
+source-repository head
+ type: git
+ location: git+ssh://gitosis@max.kxpq.de:ws1112-programmiersprachen-seminar.git
