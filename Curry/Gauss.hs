@@ -1,12 +1,13 @@
-{-# LANGUAGE Haskell2010 #-}
+{-# LANGUAGE Haskell2010, FlexibleContexts #-}
 
 module Curry.Gauss where
 
-import Data.Array (accum, assocs, bounds, (!), (//))
+-- import Data.Array (accum, assocs, bounds, (!), (//))
+import Data.Array.Unboxed (IArray, UArray, accum, assocs, bounds, (!), (//))
 
 import Curry.Matrix (Matrix, isSquare, isSingular, zeros)
 
-luDecomposition :: (Num b, Eq b, Fractional b) => Matrix b -> (Matrix b, Matrix b)
+luDecomposition :: (Num b, Eq b, Fractional b, IArray UArray b) => Matrix b -> (Matrix b, Matrix b)
 luDecomposition a
   | i /= j || (not . isSquare $ a) = error "Cannot decompose non-square matrix"
   | isSingular a = error "Cannot decompose singular matrix"
